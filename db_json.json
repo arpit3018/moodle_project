@@ -1,0 +1,99 @@
+{
+  "user_details" : {
+      "Initiator" : {
+        "uid" : "0301",
+        "name" : "Arpit Agrawal",
+        "email" : "arpitagrawal3018@gmail.com",
+        "enrollment" : "0801IT161016",
+        "branch" : "IT",
+        "year" : "3",
+        "sem" : "6",
+        "profession" : "student",
+        "teacher_right" : "0"
+      }
+  },
+
+  "subjects" : {
+    "1" : {
+      "subject_name" : "pattern_url"
+    },
+    "2" : {
+      "subject_name" : "pattern_url"
+    },
+    "3" : {
+      "CSE" : {
+        "subject_name" : {
+          "title" : "downloadUrl"
+        }
+      },
+      "IT" : {
+        "subject_name" : {
+          "title" : "downloadUrl"
+        }
+      },
+      "ENTC" : {
+        "subject_name" : {
+          "title" : "downloadUrl"
+        }
+      }
+    },
+    "4" : {
+      "subject_name" : "pattern_url"
+    },
+    "5" : {
+      "subject_name" : "pattern_url"
+    },
+    "6" : {
+
+      "CSE" : {
+        "subject_name" : {
+          "title" : "downloadUrl"
+        }
+      },
+      "IT" : {
+        "Compiler Design" : {
+          "Initiator": {
+            "title" : "title",
+            "url" : "downloadURl"
+          }
+
+        },
+        "Web Engineering" : {
+          "Initiator": {
+            "title" : "title",
+            "url" : "downloadURl"
+          }
+        },
+        "Mobile Computing" : {
+          "Initiator": {
+            "title" : "title",
+            "url" : "downloadURl"
+          }
+        },
+        "Android Lab" : {
+          "Initiator": {
+            "title" : "title",
+            "url" : "downloadURl"
+          }
+        },
+        "Distributed Computing" : {
+          "Initiator": {
+            "title" : "title",
+            "url" : "downloadURl"
+          }
+        }
+      },
+      "ENTC" : {
+        "subject_name" : {
+          "title" : "downloadUrl"
+        }
+      }
+    },
+    "7" : {
+      "subject_name" : "pattern_url"
+    },
+    "8" : {
+      "subject_name" : "pattern_url"
+    }
+  }
+}
