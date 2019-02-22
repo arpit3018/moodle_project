@@ -55,7 +55,7 @@ class _SubjectPageState extends State<SubjectPage> {
     print(url);
     var temp_dir = await getExternalStorageDirectory();
 
-    dio.download(url, "${temp_dir.path}/helo",onProgress:(rec,total){
+    dio.download(url, "${temp_dir.path}/helo",onReceiveProgress:(rec,total){
       print("Rec: ${rec} and Total: ${total}");
       setState(() {
         downloading = true;
@@ -99,5 +99,7 @@ class _SubjectPageState extends State<SubjectPage> {
       ),
     );
   }
+
 }
+
 

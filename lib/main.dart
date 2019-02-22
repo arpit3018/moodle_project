@@ -46,7 +46,6 @@ class _LoginPageState extends State<LoginPage> {
   Future <void> _signIn() async {
     GoogleSignInAccount googleSignInAccount = await _googleSignIn.signIn();
     GoogleSignInAuthentication gSA = await googleSignInAccount.authentication;
-
     FirebaseUser user = await _auth.signInWithGoogle(
         idToken: gSA.idToken, accessToken: gSA.accessToken).catchError((onError){print(onError);});
 
@@ -82,6 +81,7 @@ class _LoginPageState extends State<LoginPage> {
     });
   }
 
+
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
@@ -105,3 +105,4 @@ class _LoginPageState extends State<LoginPage> {
         );
   }
 }
+
