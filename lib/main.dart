@@ -85,24 +85,34 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-            appBar: new AppBar(title: new Text("Moodle"),
-            automaticallyImplyLeading: false,),
-            body: new Container(
-              padding: EdgeInsets.all(40.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: <Widget>[
-                  new MaterialButton(
-                    onPressed: () => _signIn(),
-                    child: new Text("Sign in"),
-                    color: Colors.green,
-                  ),
 
-                ],
+        appBar: new AppBar(title: new Text("Moodle",style: TextStyle(color: Colors.orangeAccent),),centerTitle: true,backgroundColor: Colors.black.withOpacity(0.8)),
+
+        body: Container(
+          decoration: BoxDecoration(color: Colors.black),
+          padding: EdgeInsets.all(50.0),
+          child: new Column(
+
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: <Widget>[
+              new Padding(padding: EdgeInsets.only(top: 70)),
+              new FlutterLogo(size: 100.0,),
+              new Padding(padding: EdgeInsets.only(top: 50)),
+              new Text("Moodle App",style: TextStyle(color: Colors.orangeAccent,fontSize: 40.0),textAlign: TextAlign.center,),
+              Padding(padding: EdgeInsets.only(top: 20)),
+              new Text("Get the things done at single click",style: TextStyle(color: Colors.deepOrange,fontSize: 20.0,letterSpacing: 5.0),textAlign: TextAlign.center,),
+              Padding(padding: EdgeInsets.only(top: 80)),
+              new RaisedButton(onPressed: ()=>_signIn(),color: Colors.teal,child: new Text("Get Started",style: TextStyle(fontSize: 20.0),),
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
+                padding: EdgeInsets.all(8.0),
               ),
-            )
-        );
+              new Padding(padding: EdgeInsets.only(top: 40)),
+              new Text("Version 1.0",style: TextStyle(color: Colors.white),textAlign: TextAlign.center,)
+
+            ],
+          ),
+        )
+    );
   }
 }
 
