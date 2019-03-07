@@ -45,15 +45,16 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: new AppBar(title: Text("Welcome Home"),),
+      appBar: new AppBar(title: Text("Welcome Home",style: TextStyle(color: Colors.orange),),backgroundColor: Colors.black,),
       drawer: new Drawer(
         child: ListView(
           children: <Widget>[
             new UserAccountsDrawerHeader(
+
               accountName: new Text(widget.details["name"]),
               accountEmail: new Text(widget.details["email"]),
-
-              currentAccountPicture: new CircleAvatar(backgroundColor: Colors.green,child: new Text('A'),),
+              decoration: BoxDecoration(color: Colors.black87),
+              currentAccountPicture: new CircleAvatar(backgroundColor: Colors.indigo,child: new Text(widget.details['name'][0]),),
             ),
 
             new ListTile(
@@ -61,7 +62,7 @@ class _HomePageState extends State<HomePage> {
               title: new Text("Profile"),
               onTap: () =>{},
             ),
-
+            new Divider(),
             new ListTile(
               leading: Icon(Icons.clear),
               title: new Text("Sign Out"),
@@ -77,10 +78,11 @@ class _HomePageState extends State<HomePage> {
 
         itemCount: myList==null?0:myList.length,
         itemBuilder: (context,int index) {
-          return ListTile(
+          return Card(child:
+          ListTile(
             title: new Text("${myList[index]}"),
             onTap: ()=>_subject(myList[index]),
-          );
+          ),);
         }
 
 
@@ -88,4 +90,6 @@ class _HomePageState extends State<HomePage> {
 
     );
   }
+
+
 }

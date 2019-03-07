@@ -83,9 +83,7 @@ class _SubjectPageState extends State<SubjectPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: new AppBar(
-        title: new Text("Subject"),
-      ),
+      appBar: new AppBar(title: Text("Subjects",style: TextStyle(color: Colors.orange),),backgroundColor: Colors.black,),
       body: Container(
         child: ListView.builder(
           itemCount: mylist.length,
