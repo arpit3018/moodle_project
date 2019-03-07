@@ -121,22 +121,41 @@ Fluttertoast.showToast(msg: "File Upload Succesful!");
 
   }
 
+  void _showDialog() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context){
+        return AlertDialog(
+          title: new Text("Upload Data"),
+          content: new Text("Are you sure? You want to upload data?"),
+          actions: <Widget>[
+            new FlatButton(onPressed: () {
+              Navigator.of(context).pop();
+              _addFile();
+              }, child: new Text("Upload")),
+            new FlatButton(onPressed: () => Navigator.of(context).pop(), child: new Text("Close"))
+          ],
+        );
+      }
+
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     getSub();
     return DefaultTabController(
       length: 2,
       child: new Scaffold(
+        resizeToAvoidBottomPadding: false,
         drawer: new Drawer(
           child: ListView(
             children: <Widget>[
               new UserAccountsDrawerHeader(
                 accountName: new Text(widget.details["name"]),
                 accountEmail: new Text(widget.details["email"]),
-                currentAccountPicture: new CircleAvatar(
-                  backgroundColor: Colors.green,
-                  child: new Text('A'),
-                ),
+                decoration: BoxDecoration(color: Colors.black87),
+                currentAccountPicture: new CircleAvatar(backgroundColor: Colors.indigo,child: new Text(widget.details['name'][0]),),
               ),
               new ListTile(
                 leading: Icon(Icons.account_box),
@@ -151,19 +170,17 @@ Fluttertoast.showToast(msg: "File Upload Succesful!");
             ],
           ),
         ),
-        appBar: new AppBar(
-          title: new Text('Add Resource'),
-          bottom: TabBar(
-            tabs: <Widget>[
-              Tab(
-                icon: Icon(Icons.assignment),
-              ),
-              Tab(
-                icon: Icon(Icons.add_box),
-              )
-            ],
-          ),
-        ),
+        appBar: new AppBar(title: Text("Welcome Home",style: TextStyle(color: Colors.orange),),backgroundColor: Colors.black, bottom: TabBar(
+          tabs: <Widget>[
+            Tab(
+              icon: Icon(Icons.assignment),
+            ),
+            Tab(
+              icon: Icon(Icons.add_box),
+            )
+          ],
+        ),),
+
         body: TabBarView(
           children: <Widget>[new Text("Hello"), AddItem()],
         ),
@@ -173,7 +190,7 @@ Fluttertoast.showToast(msg: "File Upload Succesful!");
 
   Widget AddItem() {
     return Container(
-      padding: EdgeInsets.all(20.0),
+      padding: EdgeInsets.all(40.0),
       child: Column(
         children: <Widget>[
           DropdownButton(
@@ -184,6 +201,7 @@ Fluttertoast.showToast(msg: "File Upload Succesful!");
               _subSelected = value;
               setState(() {});
             },
+            isExpanded: true,
           ),
           DropdownButton(
             hint: new Text("Select Sem"),
@@ -193,6 +211,7 @@ Fluttertoast.showToast(msg: "File Upload Succesful!");
               _semSelected = value;
               setState(() {});
             },
+            isExpanded: true,
           ),
           TextField(
             decoration: InputDecoration(labelText: "Title to the Resource"),
@@ -201,6 +220,7 @@ Fluttertoast.showToast(msg: "File Upload Succesful!");
               _title_resource = value;
               setState(() {});
             },
+
           ),
           Padding(
             padding: EdgeInsets.all(10.0),
@@ -231,7 +251,7 @@ Fluttertoast.showToast(msg: "File Upload Succesful!");
                   style: TextStyle(color: Colors.black),
                 ),
                 color: Colors.grey,
-                onPressed: _addFile,
+                onPressed: _showDialog,
               ),
 
             ],

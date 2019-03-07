@@ -175,7 +175,7 @@ class _ProfilePageState extends State<ProfilePage> {
 
   Widget StudentProfile(){
     return Column(
-
+      crossAxisAlignment: CrossAxisAlignment.stretch,
       children: <Widget>[
         new DropdownButtonFormField(
           items: branchList,
@@ -230,6 +230,7 @@ class _ProfilePageState extends State<ProfilePage> {
 
   Widget TeacherProfile(){
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
       children: <Widget>[
         new DropdownButtonFormField(
           items: branchList,
