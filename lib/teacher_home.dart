@@ -78,7 +78,8 @@ class _TeacherHomeState extends State<TeacherHome> {
 
       dowurl = await (await task.onComplete).ref.getDownloadURL();
       url = dowurl.toString();
-      ref.child("subjects").child(_semSelected).child(widget.details['branch']).child(_subSelected).push().set({"title":_title_resource,"url":url});
+      //Type hard coded to pdf
+      ref.child("subjects").child(_semSelected).child(widget.details['branch']).child(_subSelected).push().set({"title":_title_resource,"url":url,"type":"pdf"});
     uploadStatus =false;
 Fluttertoast.showToast(msg: "File Upload Succesful!");
       setState(() {

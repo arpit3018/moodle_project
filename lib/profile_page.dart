@@ -37,22 +37,29 @@ class _ProfilePageState extends State<ProfilePage> {
     if(form.validate())
     {
       form.save();
-      print(_EnrollmentNumber);
-      widget.user_details["enrollment"] = _EnrollmentNumber;
-      widget.user_details["year"] = year_selected.toString();
-      widget.user_details["branch"] = branch_selected;
 
-      if(sem_selected == 1)
-      {
-        widget.user_details["sem"] = (sem_selected*year_selected - 1).toString();
-      }
-      else
-        widget.user_details["sem"] = (sem_selected*year_selected).toString();
 
       if(profession_selected == "professor")
-        widget.user_details['teacher_right'] = "1";
+        {
+          widget.user_details['teacher_right'] = "1";
+          widget.user_details["profID"] = _EnrollmentNumber;
+          widget.user_details["branch"] = branch_selected;
+        }
       else
-        widget.user_details['teacher_right'] = "0";
+        {
+          widget.user_details["enrollment"] = _EnrollmentNumber;
+          widget.user_details["year"] = year_selected.toString();
+          widget.user_details["branch"] = branch_selected;
+          widget.user_details['teacher_right'] = "0";
+
+          if(sem_selected == 1)
+          {
+            widget.user_details["sem"] = (sem_selected*year_selected - 1).toString();
+          }
+          else
+            widget.user_details["sem"] = (sem_selected*year_selected).toString();
+        }
+
 
       widget.user_details['profession'] = profession_selected;
       ref.child("user_details").push().set(widget.user_details);

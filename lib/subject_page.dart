@@ -40,7 +40,8 @@ class _SubjectPageState extends State<SubjectPage> {
       var val = data.value;
 
       for (var key in keys) {
-        mylist.add([val[key]['title'],val[key]['url']]);
+        mylist.add([val[key]['title'],val[key]['url'],val[key]['type']]);
+        print(mylist);
       }
 
       setState(() {
@@ -49,13 +50,15 @@ class _SubjectPageState extends State<SubjectPage> {
     });
   }
 
-  Future <void> _launchURL(var url) async {
+  Future <void> _launchURL(String title,var url, String type) async {
 
     var dio = Dio();
-    print(url);
+    title = title.replaceAll(new RegExp(r' '), '_');
+    type = type.toLowerCase();
     var temp_dir = await getExternalStorageDirectory();
-
-    dio.download(url, "${temp_dir.path}/helo",onReceiveProgress:(rec,total){
+    print(temp_dir);
+    dio.download(url, "${temp_dir.path}/${title}.${type}",onReceiveProgress:(rec,total){
+      String out_url = "${temp_dir.path}/${title}.${type}";
       print("Rec: ${rec} and Total: ${total}");
       setState(() {
         downloading = true;
@@ -67,7 +70,6 @@ class _SubjectPageState extends State<SubjectPage> {
 
         if(progressBar == "100")
           {
-            progressBar = "";
             Fluttertoast.showToast(msg: "Downloading Completed!");
           }
 
@@ -90,7 +92,7 @@ class _SubjectPageState extends State<SubjectPage> {
           itemBuilder: (context, int index) {
             return ListTile(
               title: new Text(mylist[index][0]),
-              onTap: () => _launchURL(mylist[index][1]),
+              onTap: () => _launchURL(mylist[index][0],mylist[index][1],mylist[index][2]),
               trailing: downloading == true? new Text("${progressBar}%"):new Text(""),
 
             );
