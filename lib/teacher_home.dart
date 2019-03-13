@@ -5,6 +5,7 @@ import 'dart:io';
 import 'package:image_picker/image_picker.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import "noticeboard.dart";
 
 class TeacherHome extends StatefulWidget {
   var details;
@@ -162,16 +163,12 @@ Fluttertoast.showToast(msg: "File Upload Succesful!");
                 decoration: BoxDecoration(color: Colors.black87),
                 currentAccountPicture: new CircleAvatar(backgroundColor: Colors.indigo,child: new Text(widget.details['name'][0]),),
               ),
-              new ListTile(
-                leading: Icon(Icons.account_box),
-                title: new Text("Profile"),
-                onTap: () => {},
-              ),
-              Divider(),
+
               new ListTile(
                 leading: Icon(Icons.notifications),
                 title: new Text("Noticeboard"),
-                onTap: () => {},
+                onTap: () => Navigator.push(context, MaterialPageRoute(
+                    builder: (BuildContext context) => new NoticeBoard(widget.details["teacher_right"]))),
               ),
 
               Divider(),

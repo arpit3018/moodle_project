@@ -33,10 +33,15 @@ dependencies:
   firebase_messaging:
 
 
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  flutter_launcher_icons: "^0.6.1"
 
+flutter_icons:
+  image_path: "icon/sgsits.png"
+  android: true
 
 # For information on the generic Dart part of this file, see the
 # following page: https://www.dartlang.org/tools/pub/pubspec
@@ -50,8 +55,8 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #  - images/a_dot_burr.jpeg
+  assets:
+    - icon/sgsits.png
   #  - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

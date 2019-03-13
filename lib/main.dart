@@ -155,6 +155,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
+      resizeToAvoidBottomPadding: false,
 
 //        appBar: new AppBar(title: new Text("Moodle",style: TextStyle(color: Colors.orangeAccent),),centerTitle: true,backgroundColor: Colors.black.withOpacity(0.8)),
 
@@ -162,12 +163,13 @@ class _LoginPageState extends State<LoginPage> {
           decoration: BoxDecoration(color: Colors.black),
           padding: EdgeInsets.all(50.0),
           child: new Column(
+            mainAxisAlignment: MainAxisAlignment.center,
 
 
             children: <Widget>[
               new Padding(padding: EdgeInsets.only(top: 20)),
-              new FlutterLogo(size: 100.0,),
-              new Padding(padding: EdgeInsets.only(top: 50)),
+              new Image.asset("icon/sgsits.png",width: 200.0,height: 150.0,),
+              new Padding(padding: EdgeInsets.only(top: 30)),
               new Text("Moodle App",style: TextStyle(color: Colors.orangeAccent,fontSize: 40.0),textAlign: TextAlign.center,),
               Padding(padding: EdgeInsets.only(top: 20)),
               new Text("Get the things done at single click",style: TextStyle(color: Colors.deepOrange,fontSize: 20.0,letterSpacing: 5.0),textAlign: TextAlign.center,),
@@ -181,7 +183,7 @@ class _LoginPageState extends State<LoginPage> {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
 
               ),
-              new Padding(padding: EdgeInsets.only(top: 40)),
+              new Padding(padding: EdgeInsets.only(top: 20)),
               new Text("Version 1.0",style: TextStyle(color: Colors.white),textAlign: TextAlign.center,)
 
             ],

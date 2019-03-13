@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'subject_page.dart';
 import 'teacher_home.dart';
-
+import "noticeboard.dart";
+import "profile_update.dart";
 class HomePage extends StatefulWidget {
 
   var details;
@@ -60,13 +61,15 @@ class _HomePageState extends State<HomePage> {
             new ListTile(
               leading: Icon(Icons.account_box),
               title: new Text("Profile"),
-              onTap: () =>{},
+              onTap: () =>  Navigator.push(context, MaterialPageRoute(
+                  builder: (BuildContext context) => new ProfileUpdate(widget.details))),
             ),
             new Divider(),
             new ListTile(
               leading: Icon(Icons.notifications),
               title: new Text("Noticeboard"),
-              onTap: () => {},
+              onTap: () => Navigator.push(context, MaterialPageRoute(
+                  builder: (BuildContext context) => new NoticeBoard(widget.details["teacher_right"]))),
             ),
             new Divider(),
             new ListTile(
