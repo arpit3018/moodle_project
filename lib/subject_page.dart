@@ -49,9 +49,29 @@ class _SubjectPageState extends State<SubjectPage> {
       });
     });
   }
+  void _showDialog() {
+    showDialog(
+        context: context,
+        builder: (BuildContext context){
+          return AlertDialog(
+            title: new Text("Downloading Data"),
+            content: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                new CircularProgressIndicator()
+              ],
+            ),
+            actions: <Widget>[
+        ]
+          );
+        }
+
+    );
+  }
 
   Future <void> _launchURL(String title,var url, String type) async {
 
+    _showDialog();
     var dio = Dio();
     title = title.replaceAll(new RegExp(r' '), '_');
     type = type.toLowerCase();
@@ -70,6 +90,7 @@ class _SubjectPageState extends State<SubjectPage> {
 
         if(progressBar == "100")
           {
+            Navigator.of(context, rootNavigator: true).pop('dialog');
             Fluttertoast.showToast(msg: "Downloading Completed!");
           }
 
@@ -88,11 +109,12 @@ class _SubjectPageState extends State<SubjectPage> {
         child: ListView.builder(
           itemCount: mylist.length,
           itemBuilder: (context, int index) {
-            return ListTile(
-              title: new Text(mylist[index][0]),
-              onTap: () => _launchURL(mylist[index][0],mylist[index][1],mylist[index][2]),
-              trailing: downloading == true? new Text("${progressBar}%"):new Text(""),
+            return Card(
+              child: ListTile(
+                title: new Text(mylist[index][0]),
+                onTap: () => _launchURL(mylist[index][0],mylist[index][1],mylist[index][2]),
 
+              ),
             );
           },
         ),

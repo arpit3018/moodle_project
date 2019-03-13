@@ -44,9 +44,11 @@ class _ProfilePageState extends State<ProfilePage> {
           widget.user_details['teacher_right'] = "1";
           widget.user_details["profID"] = _EnrollmentNumber;
           widget.user_details["branch"] = branch_selected;
+          widget.user_details["sem"] = "6";
         }
       else
         {
+
           widget.user_details["enrollment"] = _EnrollmentNumber;
           widget.user_details["year"] = year_selected.toString();
           widget.user_details["branch"] = branch_selected;
