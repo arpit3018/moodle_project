@@ -64,6 +64,12 @@ class _HomePageState extends State<HomePage> {
             ),
             new Divider(),
             new ListTile(
+              leading: Icon(Icons.notifications),
+              title: new Text("Noticeboard"),
+              onTap: () => {},
+            ),
+            new Divider(),
+            new ListTile(
               leading: Icon(Icons.clear),
               title: new Text("Sign Out"),
               onTap: ()=>widget.callback(),

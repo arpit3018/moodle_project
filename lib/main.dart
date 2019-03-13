@@ -97,9 +97,6 @@ class _LoginPageState extends State<LoginPage> {
 
   void _signOut() {
 
-    _message.getToken().then((token) {
-      print(token);
-    });
     _googleSignIn.signOut();
     _auth.signOut();
     Navigator.push(context,
@@ -109,8 +106,12 @@ class _LoginPageState extends State<LoginPage> {
   Future <void> _signIn() async {
     GoogleSignInAccount googleSignInAccount = await _googleSignIn.signIn();
     GoogleSignInAuthentication gSA = await googleSignInAccount.authentication;
+
+
     FirebaseUser user = await _auth.signInWithGoogle(
         idToken: gSA.idToken, accessToken: gSA.accessToken).catchError((onError){print(onError);});
+
+
 
     setState(() {
       ref.child('user_details').orderByChild("uid").equalTo(user.uid)
@@ -120,6 +121,9 @@ class _LoginPageState extends State<LoginPage> {
 
 
         if (data.value == null) {
+          _message.getToken().then((token) {
+            ref.child("tokens").push().set({"token":token});
+          });
 
           Navigator.push(context, MaterialPageRoute(
               builder: (BuildContext context) => new ProfilePage(user_detail,_signOut)));
@@ -128,6 +132,8 @@ class _LoginPageState extends State<LoginPage> {
           String key = data.value.keys.toString();
 
           var full_details = data.value[key.substring(1,key.length-1)];
+
+          print(full_details);
           if(full_details['teacher_right'] == "0")
             {
               Navigator.push(context, MaterialPageRoute(

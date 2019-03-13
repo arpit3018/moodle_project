@@ -30,6 +30,7 @@ class _TeacherHomeState extends State<TeacherHome> {
   
   @override
   void initState() {
+
     
     String sem;
     myList = new List();
@@ -42,8 +43,11 @@ class _TeacherHomeState extends State<TeacherHome> {
       var keys = ans.value.keys;
       var val = ans.value;
       for (var key in keys) {
-        sem = val[key]['sem'];
+                sem = val[key]['sem'];
+                print(sem);
+
       }
+
       setState(() {});
 
       ref.child("subjects").child(sem).child(widget.details['branch']).once().then((DataSnapshot data) {
@@ -53,8 +57,9 @@ class _TeacherHomeState extends State<TeacherHome> {
         for (var key in keys) {
           myList.add(key);
         }
+        setState(() {
 
-        setState(() {});
+        });
       });
     });
   }
@@ -162,6 +167,14 @@ Fluttertoast.showToast(msg: "File Upload Succesful!");
                 title: new Text("Profile"),
                 onTap: () => {},
               ),
+              Divider(),
+              new ListTile(
+                leading: Icon(Icons.notifications),
+                title: new Text("Noticeboard"),
+                onTap: () => {},
+              ),
+
+              Divider(),
               new ListTile(
                 leading: Icon(Icons.clear),
                 title: new Text("Sign Out"),
@@ -182,8 +195,30 @@ Fluttertoast.showToast(msg: "File Upload Succesful!");
         ),),
 
         body: TabBarView(
-          children: <Widget>[new Text("Hello"), AddItem()],
+          children: <Widget>[TeacherSubs(), AddItem()],
         ),
+      ),
+    );
+  }
+
+  Widget TeacherSubs() {
+
+    return Container(
+      child: Column(
+        children: <Widget>[
+          Card(
+            child: ListTile(
+              title: new Text("Compiler Design"),
+              onTap: () => {},
+            ),
+          ),
+          Card(
+            child: ListTile(
+              title: new Text("Operating Systems"),
+              onTap: () => {},
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -193,6 +228,7 @@ Fluttertoast.showToast(msg: "File Upload Succesful!");
       padding: EdgeInsets.all(40.0),
       child: Column(
         children: <Widget>[
+
           DropdownButton(
             hint: new Text("Select Subject"),
             items: subList,
@@ -203,6 +239,7 @@ Fluttertoast.showToast(msg: "File Upload Succesful!");
             },
             isExpanded: true,
           ),
+
           DropdownButton(
             hint: new Text("Select Sem"),
             items: semList,
@@ -213,6 +250,7 @@ Fluttertoast.showToast(msg: "File Upload Succesful!");
             },
             isExpanded: true,
           ),
+
           TextField(
             decoration: InputDecoration(labelText: "Title to the Resource"),
             onTap: () => {},

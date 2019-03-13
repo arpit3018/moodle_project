@@ -6,13 +6,27 @@ admin.initializeApp(functions.config().firebase);
 var msgData;
 
 exports.offerTrigger = functions.database.ref('/subjects').onUpdate(
+
+
     (snapshot,context) => {
-        token = ["eAAv2nO1fpI:APA91bEHv4MFy2y6z0JVTJS4y4KdI3pZzqWwaI0hWBnCmYOgUDqBCmJY3Zz715BhBF6RG0Bqw2C4Dcy_dhtm4t6P6dlwg8j3MDpkd5tslPp71ib-UzhZNaASgiCSkWT8gtW7I6qJAWUV"];
+
+        var siteListref = admin.database().ref().child('tokens')
+        siteListref.on('value', function(snapshot){
+        tokens =[]
+        snapshot.forEach(function(trialSnapshot) {
+        var userName = trialSnapshot.val();
+
+        tokens.push(userName.token);
+        
+    });
+}
+        )
+//        token = ["extmZkpiL9M:APA91bGAV5nt9AVIWRD3wvpTwAtN-QqYKFhoEHRQcalif11hWu-KYdG-dKnHq3PP5Fo9c4DmJ6R2Qch6OngyCXlZ9csO0jJM82MDcR7S9OwbXwUox38VWfmYDcC3ipI0zEnTqXiuxrU6"];
 
         var payload = {
             "notification" : {
-                "title" : "From Arpit",
-                "body" : "Offer",
+                "title" : "Assigment Alert",
+                "body" : "Kindly check! Assignment has been uploaded.",
                 "sound" : "default"
             },
             "data" : {
@@ -21,7 +35,7 @@ exports.offerTrigger = functions.database.ref('/subjects').onUpdate(
             }
         }
 
-        return admin.messaging().sendToDevice(token,payload).then((res) => {console.log("Pushed")}).catch((err) => console.log(err));
+        return admin.messaging().sendToDevice(tokens,payload).then((res) => {console.log("Pushed")}).catch((err) => console.log(err));
 
     }
 );
