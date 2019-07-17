@@ -21,7 +21,6 @@ exports.offerTrigger = functions.database.ref('/subjects').onUpdate(
     });
 }
         )
-//        token = ["extmZkpiL9M:APA91bGAV5nt9AVIWRD3wvpTwAtN-QqYKFhoEHRQcalif11hWu-KYdG-dKnHq3PP5Fo9c4DmJ6R2Qch6OngyCXlZ9csO0jJM82MDcR7S9OwbXwUox38VWfmYDcC3ipI0zEnTqXiuxrU6"];
 
         var payload = {
             "notification" : {
